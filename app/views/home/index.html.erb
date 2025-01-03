@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card text-white bg-warning mb-3" onclick="location.href='#'" style="cursor: pointer;">
+        <div class="card-header">Notas Fiscais Aguardando Pagamento</div>
+        <div class="card-body">
+          <h5 class="card-title">Quantidade: <%= @authorized_count %></h5>
+          <p class="card-text">Valor Total: R$ <%= number_to_currency(@authorized_value, unit: "", separator: ",", delimiter: ".") %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-white bg-success mb-3" onclick="location.href='#'" style="cursor: pointer;">
+        <div class="card-header">Valores Já Disponíveis</div>
+        <div class="card-body">
+          <h5 class="card-title">Quantidade: <%= @release_count %></h5>
+          <p class="card-text">Valor Total: R$ <%= number_to_currency(@release_value, unit: "", separator: ",", delimiter: ".") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

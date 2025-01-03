@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Simplicio Doctor" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <%= stylesheet_link_tag 'bootstrap', "data-turbo-track": "reload", media: "all" %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    
+  </head>
+
+  <body>
+    <header class="bg-primary text-white text-center py-3">
+      <h1>Simplicio</h1>
+    </header>
+
+    <div class="side-menu" id="sideMenu">
+      <h2>Menu</h2>
+      <a href="#">Home</a>
+      <a href="#">Profile</a>
+      <a href="#">Settings</a>
+      <a href="#">Logout</a>
+    </div>
+
+    <div class="main-content container">
+      <%= yield %>
+    </div>
+
+    <footer class="footer d-flex justify-content-between align-items-center">
+      <button class="btn btn-outline-primary rounded-circle mx-2">
+        <i class="bi bi-gear"></i>
+      </button>
+      <%= link_to root_path, class: "btn btn-primary btn-lg rounded-circle mx-2" do %>
+        <i class="bi bi-house"></i>
+      <% end %>
+      <button class="btn btn-outline-primary rounded-circle mx-2" onclick="toggleMenu()">
+         <i class="bi bi-list"></i>
+      </button>
+    </footer>
+    
+
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('sideMenu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      }
+
+      document.addEventListener('click', function(event) {
+        const menu = document.getElementById('sideMenu');
+        const button = document.querySelector('button[onclick="toggleMenu()"]');
+        if (!menu.contains(event.target) && !button.contains(event.target)) {
+          menu.classList.remove('show');
+        }
+      });
+    </script>
+    <%= javascript_importmap_tags %>
+  </body>
+</html>
