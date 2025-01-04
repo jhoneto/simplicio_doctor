@@ -1,20 +1,39 @@
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card text-white bg-warning mb-3" onclick="location.href='#'" style="cursor: pointer;">
-        <div class="card-header">Notas Fiscais Aguardando Pagamento</div>
-        <div class="card-body">
-          <h5 class="card-title">Quantidade: <%= @authorized_count %></h5>
-          <p class="card-text">Valor Total: R$ <%= number_to_currency(@authorized_value, unit: "", separator: ",", delimiter: ".") %></p>
+<div class="row">
+
+<div class="col-xl-3 col-md-6 mb-4">
+  <div class="card border-left-warning shadow h-100 py-2" onclick="location.href='<%= invoice_partners_path(status: :authorized) %>'">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+            Aguardando Pagamento
+          </div>
+          <div class="h5 mb-0 font-weight-bold text-gray-800">
+            <%= number_to_currency(@authorized_value) %>
+          </div>
+        </div>
+        <div class="col-auto">
+          <i class="fas fa-calendar fa-2x text-gray-300"></i>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card text-white bg-success mb-3" onclick="location.href='#'" style="cursor: pointer;">
-        <div class="card-header">Valores Já Disponíveis</div>
-        <div class="card-body">
-          <h5 class="card-title">Quantidade: <%= @release_count %></h5>
-          <p class="card-text">Valor Total: R$ <%= number_to_currency(@release_value, unit: "", separator: ",", delimiter: ".") %></p>
+  </div>
+</div>
+
+<div class="col-xl-3 col-md-6 mb-4">
+  <div class="card border-left-success shadow h-100 py-2" onclick="location.href='<%= invoice_partners_path(status: :release) %>'">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+            Disponível
+          </div>
+          <div class="h5 mb-0 font-weight-bold text-gray-800">
+            <%= number_to_currency(@release_value) %>
+          </div>
+        </div>
+        <div class="col-auto">
+          <i class="fas fa-wallet fa-2x text-gray-300"></i>
         </div>
       </div>
     </div>

@@ -17,58 +17,33 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
-    <%= stylesheet_link_tag 'bootstrap', "data-turbo-track": "reload", media: "all" %>
+
+    <%= stylesheet_link_tag 'fontawesome/all', "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'theme', "data-turbo-track": "reload", media: "all" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     
   </head>
 
-  <body>
-    <header class="bg-primary text-white text-center py-3">
-      <h1>Simplicio</h1>
-    </header>
-
-    <div class="side-menu" id="sideMenu">
-      <h2>Menu</h2>
-      <a href="#">Home</a>
-      <a href="#">Profile</a>
-      <a href="#">Settings</a>
-      <a href="#">Logout</a>
+  <body id="page-top">
+    <div id="wrapper">
+      <%= render 'layouts/side_menu' %>
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <%= render 'layouts/top_bar' %>
+          <div class="container-fluid">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800"><%= content_for(:title) || "" %></h1>
+            </div>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="main-content container">
-      <%= yield %>
-    </div>
-
-    <footer class="footer d-flex justify-content-between align-items-center">
-      <button class="btn btn-outline-primary rounded-circle mx-2">
-        <i class="bi bi-gear"></i>
-      </button>
-      <%= link_to root_path, class: "btn btn-primary btn-lg rounded-circle mx-2" do %>
-        <i class="bi bi-house"></i>
-      <% end %>
-      <button class="btn btn-outline-primary rounded-circle mx-2" onclick="toggleMenu()">
-         <i class="bi bi-list"></i>
-      </button>
-    </footer>
-    
-
-
-    <script>
-      function toggleMenu() {
-        const menu = document.getElementById('sideMenu');
-        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-      }
-
-      document.addEventListener('click', function(event) {
-        const menu = document.getElementById('sideMenu');
-        const button = document.querySelector('button[onclick="toggleMenu()"]');
-        if (!menu.contains(event.target) && !button.contains(event.target)) {
-          menu.classList.remove('show');
-        }
-      });
-    </script>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "theme" %>
   </body>
 </html>
