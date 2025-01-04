@@ -1,16 +1,38 @@
 (function() {
   "use strict";
 
+  // Function to initialize the sidebar state
+  function initializeSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    if (sidebar) {
+      // Add the "toggled" class to hide the sidebar initially
+      document.body.classList.add("sidebar-toggled");
+      sidebar.classList.add("toggled");
+
+      // Collapse all dropdowns in the sidebar
+      sidebar.querySelectorAll('.collapse').forEach(function(collapse) {
+        new bootstrap.Collapse(collapse, { toggle: false }).hide();
+      });
+    }
+  }
+
+  // Initialize the sidebar state on page load
+  document.addEventListener("DOMContentLoaded", function() {
+    initializeSidebar();
+  });
+
   // Toggle the side navigation
   document.querySelectorAll("#sidebarToggle, #sidebarToggleTop").forEach(function(toggle) {
     toggle.addEventListener('click', function() {
       document.body.classList.toggle("sidebar-toggled");
       const sidebar = document.querySelector(".sidebar");
-      sidebar.classList.toggle("toggled");
-      if (sidebar.classList.contains("toggled")) {
-        sidebar.querySelectorAll('.collapse').forEach(function(collapse) {
-          new bootstrap.Collapse(collapse, { toggle: false }).hide();
-        });
+      if (sidebar) {
+        sidebar.classList.toggle("toggled");
+        if (sidebar.classList.contains("toggled")) {
+          sidebar.querySelectorAll('.collapse').forEach(function(collapse) {
+            new bootstrap.Collapse(collapse, { toggle: false }).hide();
+          });
+        }
       }
     });
   });
@@ -25,7 +47,7 @@
 
     // Toggle the side navigation when window is resized below 480px
     const sidebar = document.querySelector(".sidebar");
-    if (window.innerWidth < 480 && !sidebar.classList.contains("toggled")) {
+    if (window.innerWidth < 480 && sidebar && !sidebar.classList.contains("toggled")) {
       document.body.classList.add("sidebar-toggled");
       sidebar.classList.add("toggled");
       sidebar.querySelectorAll('.collapse').forEach(function(collapse) {
@@ -49,11 +71,7 @@
     const scrollDistance = window.scrollY;
     const scrollToTop = document.querySelector('.scroll-to-top');
     if (scrollToTop) {
-      if (scrollDistance > 100) {
-        scrollToTop.style.display = "block";
-      } else {
-        scrollToTop.style.display = "none";
-      }
+      scrollToTop.style.display = scrollDistance > 100 ? "block" : "none";
     }
   });
 

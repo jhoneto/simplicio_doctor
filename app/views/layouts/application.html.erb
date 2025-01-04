@@ -26,6 +26,7 @@
     <%= stylesheet_link_tag 'theme', "data-turbo-track": "reload", media: "all" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     
+    <%= javascript_importmap_tags %>
   </head>
 
   <body id="page-top">
@@ -43,7 +44,7 @@
         </div>
       </div>
     </div>
-    <%= javascript_importmap_tags %>
+    
     <%= javascript_include_tag "theme" %>
   </body>
 </html>
