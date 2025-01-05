@@ -8,3 +8,12 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.extract-text {
+  font-size: 0.8rem;
+
+  .badge {
+    font-size: 0.8rem;
+    color: #fff
+  }
+}

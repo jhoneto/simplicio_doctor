@@ -1,0 +1,18 @@
+
+<div class="container">
+  <div class="row">
+    <% @payments.each do |payment| %>
+      <div class="col-12 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"><strong>Data:</strong> <%= I18n.l(payment.payment_date) %></p>
+            <p class="card-text"><strong>Valor bruto:</strong> <%= number_to_currency(payment.invoice_partners.inject(0.0){ |sum, ip| sum + ip.original_value}) %></p>
+            <p class="card-text"><strong>Descontos:</strong> <%= number_to_currency(payment.discounts.inject(0.0){ |sum, ip| sum + ip.value}) %></p>
+            <p class="card-text"><h5><strong>Valor:</strong> <%= number_to_currency(payment.total_value) %></h5></p>
+             <a href="<%= payment_path(payment) %>" class="btn btn-primary">Detalhes</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

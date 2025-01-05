@@ -2,8 +2,8 @@
 
     <!-- Sidebar - Brand -->
   <%= link_to root_path, class: "sidebar-brand d-flex align-items-center justify-content-center toggled" do %> 
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
+    <div class="sidebar-brand-icon">
+      <%= image_tag "logo_vert.jpg", class: "img-fluid" %>
     </div>
     <div class="sidebar-brand-text mx-3">
       Simplicio
@@ -16,6 +16,13 @@
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Início</span>
+    <% end %>
+  </li>
+
+  <li class="nav-item active">
+    <%= link_to payments_path, class: "nav-link" do %>
+      <i class="fas fa-fw fa-tasks"></i>
+      <span>Pagamentos</span>
     <% end %>
   </li>
 </ul>

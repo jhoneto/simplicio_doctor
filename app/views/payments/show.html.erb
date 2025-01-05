@@ -1,0 +1,53 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center">Detalhes do Pagamento</h5>
+      <p class="card-text text-center"><strong>Data do Pagamento:</strong> <%= I18n.l(@payment.payment_date) %></p>
+      
+      <div class="mt-4">
+        <h6>Notas Pagas</h6>
+        <ul class="list-group">
+          <% @payment.invoice_partners.each do |ip| %>
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between extract-text">
+                <div>
+                  <span><strong>Hospital:</strong> <%= ip.invoice.hospital.name %> <%= ip.invoice.hospital_local.name %></span><br>
+                  <span><strong>Nota:</strong> <%= ip.invoice.invoice_number %></span><br>
+                  <span><strong>Data:</strong> <%= I18n.l(ip.invoice.invoice_date, format: :date) %></span>
+                </div>
+                <div class="text-end">
+                  <span class="badge bg-primary"> <%= number_to_currency(ip.original_value) %></span>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <p class="mt-2 text-end"><strong>Total:</strong> R$ <%= number_to_currency(@payment.invoice_partners.inject(0.0){ |sum, ip| sum + ip.original_value}, separator: ",", delimiter: ".") %></p>
+      </div>
+
+      <div class="mt-4">
+        <h6>Descontos</h6>
+        <ul class="list-group">
+          <% @payment.discounts.each do |dis| %>
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between extract-text">
+                <div>
+                  <span><strong>Competência:</strong> <%= dis.competence %></span><br>
+                  <span><strong>Tipo:</strong> <%= dis.discount_type_str %></span>
+                </div>
+                <div class="text-end">
+                  <span class="badge bg-danger"> <%= number_to_currency(dis.value, separator: ",", delimiter: ".") %></span>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <p class="mt-2 text-end"><strong>Total:</strong>  <%= number_to_currency(@payment.discounts.inject(0.0){ |sum, dis| sum + dis.value}) %></p>
+      </div>
+
+      <div class="mt-4">
+        <h5 class="text-center"><strong>Total Líquido:</strong>  <%= number_to_currency(@payment.total_value) %></h5>
+      </div>
+    </div>
+  </div>
+</div>

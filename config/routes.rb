@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :invoice_partners, only: [ :index, :show ]
+  resources :payments, only: [ :index, :show ]
 end
