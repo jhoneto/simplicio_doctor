@@ -58,6 +58,8 @@ FROM base
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
+ENV SECRET_KEY_BASE=7d3f097f968a1295d0ea4896b7a3dd4097285725119f45b0a65c90dc1a287275cdde16fc232559064de733de5ddc03d32e57b3e044d11f3ee746b585705b1fe4
+
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
