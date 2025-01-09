@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   resources :invoice_partners, only: [ :index, :show ]
   resources :payments, only: [ :index, :show ]
+
+  resources :users, only: [ :edit, :update ]
 end

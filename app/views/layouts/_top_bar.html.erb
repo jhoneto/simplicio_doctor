@@ -19,10 +19,10 @@
       <!-- Dropdown - User Information -->
       <ul class="dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="userDropdown">
         <li>
-          <a class="dropdown-item" href="#">
-            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-            Configurações
-          </a>
+          <%= link_to edit_user_path(current_medical_organization_partner), class: "dropdown-item" do %>
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Minha Conta
+          <% end %>
         </li>
         <li>
           <div class="dropdown-divider"></div>
