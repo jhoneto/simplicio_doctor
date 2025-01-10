@@ -5,6 +5,8 @@ import "@hotwired/turbo-rails"
 import "@popperjs/core";
 import "bootstrap";
 import "controllers";
+import "chartkick"
+import "Chart.bundle"
 
 
 if ('serviceWorker' in navigator) {

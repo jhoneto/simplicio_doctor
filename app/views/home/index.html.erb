@@ -39,3 +39,14 @@
     </div>
   </div>
 </div>
+
+<div class="col-xl-3 col-md-6 mb-4">
+  <div class="card border-left-success shadow h-100 py-2" onclick="location.href='<%= invoice_partners_path(status: :release) %>'">
+    <div class="card-body">
+      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+        Valores recebidos
+      </div>
+      <%= column_chart @payments %>
+    </div>
+  </div>
+</div>

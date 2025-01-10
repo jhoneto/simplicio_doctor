@@ -63,5 +63,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "dotenv-rails", "~> 3.1", ">= 3.1.7"
+gem "chartkick", "~> 5.1", ">= 5.1.2"
 gem "devise", "~> 4.9", ">= 4.9.4"
+gem "dotenv-rails", "~> 3.1", ">= 3.1.7"
+gem "groupdate", "~> 6.5", ">= 6.5.1"
