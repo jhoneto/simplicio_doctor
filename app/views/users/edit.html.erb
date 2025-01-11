@@ -7,7 +7,7 @@
           <div class="col-md-3">
             <div class="form-group">
               <%= form.label :payment_type %>
-              <%= form.text_field :payment_type, class: "form-control" %>
+              <%= form.select :payment_type, [['Transferência', 'bank_transfer'], ['Pix', 'pix']], {}, { class: "form-control" } %>
             </div>
           </div>
           <div class="col-md-3">
@@ -22,7 +22,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= form.label :bank_code %>
-              <%= form.text_field :bank_code, class: "form-control" %>
+              <%= form.select :bank_code, Bank.all.map { |bank| [bank.name, bank.code] }, {}, { class: "form-control" } %>
             </div>
           </div>
           <div class="col-md-2">
@@ -54,13 +54,13 @@
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <%= form.label :password %>
+              <%= form.label :new_password %>
               <%= form.text_field :password, class: "form-control" %>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <%= form.label :password_confirmation %>
+              <%= form.label :new_password_confirmation %>
               <%= form.text_field :password, class: "form-control" %>
             </div>
           </div>
