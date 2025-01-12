@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :payments, only: [ :index, :show ]
 
   resources :users, only: [ :edit, :update ]
+  resources :notifications, only: [ :index, :show ]
 end

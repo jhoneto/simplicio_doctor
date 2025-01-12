@@ -8,9 +8,14 @@
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
 
+    <li class="nav-item dropdown no-arrow">
+      <%= link_to notifications_path, class: "nav-link" do %>
+        <i class="fas fa-envelope fa-fw"></i>
+        <!-- Counter - Messages -->
+        <span class="badge badge-danger badge-counter">7</span>
+      <% end %>
+    </li>
     <div class="topbar-divider d-none d-sm-block"></div>
-
-    <%= render 'layouts/notifications' %>
 
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">

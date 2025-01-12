@@ -1,0 +1,10 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= @notification.title %></h5>
+      <p class="card-text"><small class="text-muted"><%= I18n.l(@notification.created_at, format: :long) %></small></p>
+      <p class="card-text"><%= @notification.payload['text'] %></p>
+      <a href="<%= notifications_path %>" class="btn btn-secondary">Voltar</a>
+    </div>
+  </div>
+</div>

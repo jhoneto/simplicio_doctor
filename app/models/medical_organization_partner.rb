@@ -14,6 +14,8 @@ class MedicalOrganizationPartner < ApplicationRecord
   # has_many :payments
   # has_many :invoice_partners
 
+  has_many :notifications
+
   scope :by_medical_organization, ->(medical_organization_id) { where(medical_organization_id: medical_organization_id) }
   scope :by_cpf, ->(cpf) { where(cpf: cpf) }
   scope :by_name, ->(name) { where("name ilike UPPER(?)", "%#{name.upcase}%") }
