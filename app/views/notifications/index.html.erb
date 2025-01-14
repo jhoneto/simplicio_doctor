@@ -1,4 +1,10 @@
 <div class="container">
+  <div class="row mb-3">
+    <div class="col-12 d-flex justify-content-start">
+      <%= link_to 'Tudo', notifications_path, class: "btn #{active_notification_filter(nil, params[:filter])} me-2 mr-2 rounded-pill" %> 
+      <%= link_to 'Não Lidas', notifications_path(filter: 'unread'), class: "btn #{active_notification_filter(:unread, params[:filter].to_sym)} rounded-pill" %> 
+    </div>
+  </div>
   <div class="row">
     <% @notifications.each do |notification| %>
       <div class="col-12 mb-3">

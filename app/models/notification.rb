@@ -1,5 +1,9 @@
 class Notification < ApplicationRecord
   belongs_to :medical_organization_partner
 
-  scope :not_read, -> { where(read: false) }
+  scope :unread, -> { where(read: false) }
+
+  def read!
+    update(read: true)
+  end
 end
