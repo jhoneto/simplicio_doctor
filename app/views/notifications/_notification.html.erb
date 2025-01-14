@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <p class="card-text"><small><%= I18n.l(notification.created_at, format: :long) %></small></p>
-      <%= link_to notification_path(notification), class: "btn btn-primary", data: { turbo: false } do %>
+      <%= link_to notification_path(notification), class: "btn btn-primary", data: { turbo_frame: "_top" } do %>
         Ler
       <% end %>
     </div>
