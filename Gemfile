@@ -67,3 +67,4 @@ gem "chartkick", "~> 5.1", ">= 5.1.2"
 gem "devise", "~> 4.9", ">= 4.9.4"
 gem "dotenv-rails", "~> 3.1", ">= 3.1.7"
 gem "groupdate", "~> 6.5", ">= 6.5.1"
+gem 'pagy', '~> 9.3', '>= 9.3.3'
