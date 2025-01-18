@@ -6,6 +6,8 @@ import "chartkick"
 import "Chart.bundle"
 import "controllers";
 
+// import "libs/onesignal"
+
 if ('serviceWorker' in navigator) {
   // Register the service worker
   navigator.serviceWorker.register('/service-worker.js')
@@ -15,4 +17,5 @@ if ('serviceWorker' in navigator) {
     .catch(function(error) {
       console.log('Service Worker registration failed:', error);
     });
+
 }

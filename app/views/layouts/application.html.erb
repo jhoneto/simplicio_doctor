@@ -27,6 +27,16 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     
     <%= javascript_importmap_tags %>
+
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        onesignal = await OneSignal.init({
+          appId: "52674dfb-9ab4-4353-8ccc-ed206243859f",
+        });
+      });
+    </script>
   </head>
 
   <body id="page-top">
