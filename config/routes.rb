@@ -18,4 +18,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :edit, :update ]
   resources :notifications, only: [ :index, :show ]
+  resources :devices, only: [ :create, :destroy ]
 end
