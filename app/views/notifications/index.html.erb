@@ -1,0 +1,17 @@
+<div class="container" data-controller="infinite-scroll" data-infinite-scroll-url-value="<%= notifications_path(format: :turbo_stream) %>">
+  <div class="row mb-3">
+    <div class="col-12 d-flex justify-content-start">
+      <%= link_to 'Tudo', notifications_path, class: "btn #{active_notification_filter(nil, params[:filter])} me-2 mr-2 rounded-pill" %> 
+      <%= link_to 'Não Lidas', notifications_path(filter: 'unread'), class: "btn #{active_notification_filter(:unread, params[:filter]&.to_sym)} rounded-pill" %> 
+    </div>
+  </div>
+  <div class="row">
+    <%= turbo_frame_tag 'notitifications', data: { "infinite-scroll-target" => "container" } do %>
+      <%= render @notifications %>
+    <% end %>
+
+    <div id="loading" data-infinite-scroll-target="loading" style="display: none;">
+      Carregando...
+    </div>
+  </div>
+</div>

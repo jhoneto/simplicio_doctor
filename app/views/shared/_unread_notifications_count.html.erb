@@ -1,0 +1,6 @@
+<% unread_notifications_count = current_medical_organization_partner.notifications.unread.count %>
+<%= link_to notifications_path, class: "nav-link" do %>
+  <i class="fas fa-envelope fa-fw"></i>
+  <!-- Counter - Messages -->
+  <span class="badge badge-danger badge-counter"><%= unread_notifications_count %></span>
+<% end %>

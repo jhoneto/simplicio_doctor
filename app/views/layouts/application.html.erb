@@ -27,6 +27,56 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     
     <%= javascript_importmap_tags %>
+
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      function registerDevice(deviceId) {
+        fetch('/devices', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+          },
+          body: JSON.stringify({
+            device_id: deviceId
+          })
+        })
+      };
+
+      function unregisterDevice(deviceId) {
+        fetch(`/devices/${deviceId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+          }
+        })
+      }
+
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        onesignal = await OneSignal.init({
+          appId: "52674dfb-9ab4-4353-8ccc-ed206243859f",
+        });
+
+        OneSignal.User.addEventListener('change', function (event) {
+          console.log('change', { event });
+        });
+
+        OneSignal.User.PushSubscription.addEventListener("change", function(event){
+          console.log('permissionChange', { event });
+          if (event.current.optedIn === true) {
+            console.log('User has subscribed to push notifications');
+            registerDevice(OneSignal.User.PushSubscription.id);
+          } else {
+            console.log('User has unsubscribed to push notifications');
+            unregisterDevice(OneSignal.User.PushSubscription.id);
+          }
+        })
+      });
+
+
+    </script>
   </head>
 
   <body id="page-top">

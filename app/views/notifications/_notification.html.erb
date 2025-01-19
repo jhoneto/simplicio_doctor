@@ -1,0 +1,18 @@
+<div class="col-12 mb-3">
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="card-text mb-0"><%= notification.title %><%= notification.id %></p>
+        <% if notification.read? %>
+          <span class="badge bg-success">Lida</span>
+        <% else %>
+          <span class="badge bg-warning text-dark">Não Lida</span>
+        <% end %>
+      </div>
+      <p class="card-text"><small><%= I18n.l(notification.created_at, format: :long) %></small></p>
+      <%= link_to notification_path(notification), class: "btn btn-primary", data: { turbo_frame: "_top" } do %>
+        Ler
+      <% end %>
+    </div>
+  </div>
+</div>

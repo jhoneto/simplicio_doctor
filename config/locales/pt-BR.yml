@@ -1,5 +1,138 @@
 pt-BR:
   activerecord:
+    models:
+      bank_account: "Conta bancária"
+      bank_accounts: "Contas bancária"
+      discount: "Desconto"
+      discounts: "Descontos"
+      hospital: "Hospital"
+      hospitals: "Hospitais"
+      invoice: "Nota fiscal"
+      invoices: "Notas fiscais"
+      invoice_partner: "Rateio"
+      invoice_partner: "Rateios"
+      medical_organization: "Empresa médica"
+      medical_organizations: "Empresas medicas"
+      medical_organization_activity: "Atividade"
+      medical_organization_activities: "Atividades"
+      medical_organization_partner: "Sócio"
+      medical_organization_partners: "Sócios"
+      payment: "Pagamento"
+      payments: "Pagamentos"
+    attributes:
+      bank_account:
+        name: Nome
+        code: Código do banco
+        agency_number: Agência
+        account_number: Conta
+        btg_client_id: BTG Client ID
+        btg_client_secret: BTG Secret
+      discount:
+        value: Valor
+        competence: Competência
+        discount_type: Tipo
+      hospital:
+        cnpj: CNPJ
+        name: Nome
+        address: Endereço
+        address_number: Número
+        address_compl: Complemento
+        address_district: Bairro
+        address_zipcode: CEP
+        address_city: Cidade
+        address_state: Estado
+        email: Email
+        phone: Telefone
+        iss_prepaid: Reter ISS
+        invoice_email: Email NFSe
+        invoice_phone: Telefone NFSe
+        federal_taxes_prepaid: Reter Imp. Federais
+        ibge_code: Cód. IBGE
+      invoice:
+        created_at: Dt. emissão
+        medical_organization: Empresa médica
+        hospital: Hospital
+        medical_organization_id: Empresa médica
+        hospital_id: Hospital
+        status: Status
+        competence: Competência
+        cnae: CNAE
+        cnae_description: CNAE
+        description: Descriação
+        original_value: Vlr. original
+        iss_perc: Perc. ISS
+        iss_prepaid: Reter ISS
+        iss_prepaid_value: ISS retido
+        iss_value: Valor ISS
+        value: Valor liq.
+        rps_number: Num. RPS
+        rps_serial: Num Serial
+        invoice_number: Número da nota
+        verification_code: Cód. Verific.
+        ir_value: IR
+        csll_value: CSLL
+        pis_value: PIS
+        cofins_value: COFINS
+        federal_taxes_prepaid: Reter Imp. Federais
+        hospital_local_id: Local
+        hospital_local: Local
+        invoice_date: Data de emissão
+      invoice_partner:
+        medical_organization_partner: Médico
+      medical_organization:
+        cnpj: CNPJ
+        social_name: Razão social
+        fantasy_name: Nome fantasia
+        address: Endereço
+        address_number: Número
+        address_compl: Complemento
+        address_district: Bairro
+        address_zipcode: CEP
+        address_city: Cidade
+        address_state: Estado
+        rps_serie: Série do RPS
+        rps_next_number: Próx. RPS
+        bank_transfer_value: Tx.transf.
+        municipal_register: Insc. municipal
+        simple_opt: Opt. simples
+        ir_perc: IR(%)
+        csll_perc: CSLL(%)
+        pis_perc: PIS(%)
+        cofins_perc: COFINS(%)
+        tax_calculation_type: Regime tributário
+        ibge_code: Cód. IBGE
+        hap_user: Usuário (HAP)
+        hap_password: Senha (HAP)
+        enabled_nfsehub: Ativar integração
+      medical_organization_activity:
+        cnae: Código CNAE
+        cnae_description: CNAE
+        iss: ISS(%)
+      medical_organization_partner:
+        cpf: CPF
+        name: Nome
+        phone: Telefone
+        email: Email
+        register: Conselho
+        free_bank_transfer: Num. transf. gratuitas
+        fees: Honorários
+        taxes: Impostos(%)
+        bank_code: Banco
+        bank_agency: Agência
+        bank_account: Conta
+        transfer_tax_free: Trasnferências livres
+        hap_code: Código HAP
+        active: Ativo
+        medical_organization_id: Empresa
+        current_password: Senha atual
+        password: Senha
+        password_confirmation: Confirmação
+        new_password: Nova senha
+        new_password_confirmation: Confirmação
+      payment:
+        medical_organization_partner: Médico(a)
+        total_value: Valor
+        payment_date: Data do pagamento
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
