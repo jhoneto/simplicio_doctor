@@ -56,7 +56,7 @@
       window.OneSignalDeferred = window.OneSignalDeferred || [];
       OneSignalDeferred.push(async function(OneSignal) {
         onesignal = await OneSignal.init({
-          appId: <%= ENV['ONE_SIGNAL_APP_ID'] %>,
+          appId: '<%= ENV['ONE_SIGNAL_APP_ID'] %>',
         });
 
         OneSignal.User.addEventListener('change', function (event) {
