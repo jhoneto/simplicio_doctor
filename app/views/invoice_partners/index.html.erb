@@ -12,7 +12,7 @@
           <div class="card-body">
             <h5 class="card-title">Origem: <%= invoice.hospital.name %></h5> 
             <p class="card-text"><strong>Valor:</strong> <%= number_to_currency(invoice.original_value) %></p>
-            <p class="card-text"><strong>Status:</strong> <%= invoice.status %></p>
+            <p class="card-text"><strong>Status:</strong> <%= invoice.status_text %></p>
             <p class="card-text"><strong>Data de Emissão:</strong> <%= invoice.invoice_date.strftime("%d/%m/%Y") %></p>
           </div>
         </div>

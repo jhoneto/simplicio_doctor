@@ -17,5 +17,12 @@ if ('serviceWorker' in navigator) {
     .catch(function(error) {
       console.log('Service Worker registration failed:', error);
     });
-
+  
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+      for(let registration of registrations) {
+        if (registration.active.scriptURL.includes("sw.js")) {
+          registration.unregister();
+        }
+      } 
+  });
 }

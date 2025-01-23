@@ -16,10 +16,12 @@ class Payment < ApplicationRecord
   scope :by_partner_id, ->(id) { where("medical_organization_partner_id = ?", id) }
   scope :by_medical_organization_id, ->(id) { joins(:medical_organization_partner).where("medical_organization_partners.medical_organization_id = ?", id) }
 
-  def self.total_by_month(medical_organization_partner_id)
-    where(medical_organization_partner_id: medical_organization_partner_id)
-      .group_by_month_of_year(:payment_date, format: "%m/%Y")
-      .sum(:total_value)
+  def self.total_by_month(medical_organization_partner_id, start_date, end_date)
+    where(medical_organization_partner_id: medical_organization_partner_id).
+      where("payment_date >= ?", start_date.to_date).
+      where("payment_date <= ?", end_date.to_date).
+      group_by_month_of_year(:payment_date, format: "%m/%Y").
+      sum(:total_value)
   end
   def self.current_competence
     Date.today.strftime("%m/%Y")
