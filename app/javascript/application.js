@@ -10,19 +10,21 @@ import "controllers";
 
 if ('serviceWorker' in navigator) {
   // Register the service worker
-  navigator.serviceWorker.register('/service-worker.js')
-    .then(function(registration) {
-      console.log('Service Worker registered with scope:', registration.scope);
-    })
-    .catch(function(error) {
-      console.log('Service Worker registration failed:', error);
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+    
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          if (registration.active.scriptURL.includes("sw.js")) {
+            registration.unregister();
+          }
+        } 
     });
-  
-  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-      for(let registration of registrations) {
-        if (registration.active.scriptURL.includes("sw.js")) {
-          registration.unregister();
-        }
-      } 
   });
 }
